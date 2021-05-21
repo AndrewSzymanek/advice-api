@@ -9,6 +9,8 @@ const app = express();
 const port = 9000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+//need bodyParser.json() otherwise request will send empty Object to db
+app.use(bodyParser.json());
 app.use(cors());
 
 MongoClient.connect(db.url, (err, database) => {
